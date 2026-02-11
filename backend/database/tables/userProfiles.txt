@@ -1,0 +1,10 @@
+create table public.profiles (
+  id uuid primary key references auth.users(id) on delete cascade,
+  full_name text,
+  age int check (age >= 0),
+  gender text check (gender in ('male', 'female', 'other')),
+  city text,
+  state text,
+  country text,
+  created_at timestamp with time zone default now()
+);
